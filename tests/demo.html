@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Element Query Tests Demo</title>
+
+<style>
+  * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-kerning: auto;
+  }
+  html {
+    font-size: 12pt;
+    line-height: 1.4;
+    font-weight: 400;
+    font-family: 'Helvetica Neue', 'Myriad Pro', 'Segoe UI', Myriad, Helvetica, 'Lucida Grande', 'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, Arial, sans-serif;
+  }
+  body {
+    padding: 1em;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  code,
+  pre,
+  blockquote {
+    padding: .2em;
+    background: rgba(0,0,0,.1);
+  }
+  code,
+  pre {
+    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 .5em 0;
+    line-height: 1.2;
+    letter-spacing: -.02em;
+  }
+  [class*=float-] {
+    margin: 0 auto 1em auto;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    clear: both;
+  }
+  @media (min-width: 600px) {
+    h1 { font-size: 300%; }
+    h2 { font-size: 200%; }
+    h3 { font-size: 180%; }
+    h4 { font-size: 160%; }
+    h5 { font-size: 140%; }
+    h6 { font-size: 120%; }
+    [class*=float-] {
+      max-width: 40%;
+    }
+    .float-left {
+      float: left;
+      margin: 0 1em .5em 0;
+    }
+    .float-right {
+      float: right;
+      margin: 0 0 .5em 1em;
+    }
+  }
+  h3 {
+    margin-top: 1em;
+  }
+  div,
+  input:not([type=button]) {
+    padding: 1em;
+    margin: 1em 0;
+    border: 1px solid;
+  }
+  input:not([type=button]) {
+    width: 100%;
+  }
+  [id*="Width"] {
+    display: inline-block;
+    min-width: auto;
+    max-width: 100%;
+    overflow: auto;
+    resize: horizontal;
+  }
+  [id*="Height"] {
+    min-height: auto;
+    max-height: 300px;
+    overflow: auto;
+    resize: vertical;
+  }
+  [id*="AspectRatio"],
+  #orientation {
+    display: inline-block;
+    min-width: 100px;
+    min-height: 100px;
+    overflow: auto;
+    resize: both;
+  }
+  [id*="Scroll"] {
+    padding: 0;
+  }
+  [id*="Scroll"] p {
+    margin: .25em;
+    font-size: 3vw;
+  }
+  [id*="ScrollX"] {
+    overflow-x: scroll;
+  }
+  [id*="ScrollX"] p {
+    width: 200%;
+  }
+  [id*="ScrollY"] {
+    max-height: 4em;
+    overflow-y: scroll;
+  }
+  [id*="ScrollY"] p {
+    height: 200%;
+  }
+</style>
+
+<h1>Element Query Tests</h1>
+
+<h3>Min-Width</h3>
+<div id="minWidth">Min Width (drag to resize)</div>
+
+<h3>Max-Width</h3>
+<div id="maxWidth">Max Width (drag to resize)</div>
+
+<h3>Min-Height</h3>
+<div id="minHeight">Min Height (drag to resize)</div>
+
+<h3>Max-Height</h3>
+<div id="maxHeight">Max Height (drag to resize)</div>
+
+<h3>Min-Characters</h3>
+<div id="minCharacters" contenteditable>Min Characters (type in here)</div>
+
+<h3>Min-Characters (on form inputs)</h3>
+<input id="minCharactersForm" placeholder="Min Characters on form inputs">
+
+<h3>Max-Characters</h3>
+<div id="maxCharacters" contenteditable>Max Characters (type in here)</div>
+
+<h3>Max-Characters (on form inputs)</h3>
+<input id="maxCharactersForm" placeholder="Max Characters on form inputs">
+
+<h3>Min-Children</h3>
+<div id="minChildren">Min Children
+</div>
+<input type=button onclick="previousElementSibling.appendChild(document.createElement('div'));" value="Add Child">
+
+<h3>Max-Children</h3>
+<div id="maxChildren">Max Children
+</div>
+<input type=button onclick="previousElementSibling.appendChild(document.createElement('div'))" value="Add Child">
+
+<h3>Min-Scroll-X</h3>
+<div id="minScrollX">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam distinctio, doloremque, iure magni neque sed natus eveniet, atque tempora aliquid dolores deleniti impedit amet doloribus voluptatibus vel dolorem sit qui.</p>
+</div>
+
+<h3>Max-Scroll-X</h3>
+<div id="maxScrollX">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam distinctio, doloremque, iure magni neque sed natus eveniet, atque tempora aliquid dolores deleniti impedit amet doloribus voluptatibus vel dolorem sit qui.</p>
+</div>
+
+<h3>Min-Scroll-Y</h3>
+<div id="minScrollY">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam distinctio, doloremque, iure magni neque sed natus eveniet, atque tempora aliquid dolores deleniti impedit amet doloribus voluptatibus vel dolorem sit qui.</p>
+</div>
+
+<h3>Max-Scroll-Y</h3>
+<div id="maxScrollY">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam distinctio, doloremque, iure magni neque sed natus eveniet, atque tempora aliquid dolores deleniti impedit amet doloribus voluptatibus vel dolorem sit qui.</p>
+</div>
+
+<h3>Min-Aspect-Ratio</h3>
+<div id="minAspectRatio">(drag to resize)</div>
+
+<h3>Max-Aspect-Ratio</h3>
+<div id="maxAspectRatio">(drag to resize)</div>
+
+<h3>Orientation</h3>
+<div id="orientation"></div>
+
+<script type="module">
+  import jsincss from 'https://unpkg.com/jsincss/index.js'
+  import * as eq from '../index.vanilla.js'
+
+  jsincss(()=>`
+
+    ${eq.minWidth(minWidth, 500) && '#minWidth'} {
+      background: lime;
+    }
+
+    ${eq.maxWidth(maxWidth, 500) && '#maxWidth'} {
+      background: lime;
+    }
+
+    ${eq.minHeight(minHeight, 100) && '#minHeight'} {
+      background: lime;
+    }
+
+    ${eq.maxHeight(maxHeight, 100) && '#maxHeight'} {
+      background: lime;
+    }
+
+    ${eq.minCharacters(minCharacters, 5) && '#minCharacters'} {
+      background: lime;
+    }
+
+    ${eq.maxCharacters(maxCharacters, 5) && '#maxCharacters'} {
+      background: lime;
+    }
+
+    ${minCharactersForm.value.length > 5 && '#minCharactersForm'} {
+      background: lime;
+    }
+
+    ${maxCharactersForm.value.length < 5 && '#maxCharactersForm'} {
+      background: lime;
+    }
+
+    ${minChildren.children.length > 3 && '#minChildren'} {
+      background: lime;
+    }
+
+    ${maxChildren.children.length < 3 && '#maxChildren'} {
+      background: lime;
+    }
+
+    ${eq.minAspectRatio(minAspectRatio, 16/9) && '#minAspectRatio'} {
+      background: lime;
+    }
+
+    ${eq.maxAspectRatio(maxAspectRatio, 16/9) && '#maxAspectRatio'} {
+      background: lime;
+    }
+
+    ${eq.orientation(orientation, 'portrait') && '#orientation'} {
+      background: orchid;
+    }
+
+    ${eq.orientation(orientation, 'square') && '#orientation'} {
+      background: darkturquoise;
+    }
+
+    ${eq.orientation(orientation, 'landscape') && '#orientation'} {
+      background: greenyellow;
+    }
+
+  `, window, ['load', 'resize', 'input', 'click', 'mouseup'])
+
+  let scrollStyles = () => `
+
+    ${eq.minScrollX(minScrollX, 50) && '#minScrollX'} {
+      background: lime;
+    }
+
+    ${eq.maxScrollX(maxScrollX, 50) && '#maxScrollX'} {
+      background: lime;
+    }
+
+    ${eq.minScrollY(minScrollY, 50) && '#minScrollY'} {
+      background: lime;
+    }
+
+    ${eq.maxScrollY(maxScrollY, 50) && '#maxScrollY'} {
+      background: lime;
+    }
+
+  `
+
+  jsincss(scrollStyles, window, ['load'])
+  jsincss(scrollStyles, '[id*="Scroll"]', ['scroll'])
+</script>
