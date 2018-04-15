@@ -1,0 +1,37 @@
+{
+  "name": "element-query-tests",
+  "version": "1.0.0",
+  "description": "JavaScript tests for element query conditions",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomhodgins/element-query-tests.git"
+  },
+  "keywords": [
+    "element",
+    "container",
+    "query",
+    "condition",
+    "test",
+    "element-query",
+    "element-queries",
+    "container-query",
+    "container-queries",
+    "eq",
+    "eqcss",
+    "jsincss",
+    "js-in-css"
+  ],
+  "author": "Tommy Hodgins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomhodgins/element-query-tests/issues"
+  },
+  "homepage": "https://github.com/tomhodgins/element-query-tests#readme"
+}
